@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="Login.css" />
+   
+    
+  <style>
+  body{
+      margin: 60px;
+  }
+  .col{
+    margin-top: 25px;
+  }
+  #radio{
+    margin-top: 10px ;
+    
+  }
+
+  </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;padding-bottom: 50px">Student Online Residential Registration Form</h2>
+    
+        <div id="one">
+          <form style="width:50%">
+              <p>StudentName :Serwaa Bossman</p>
+              <p>StudentID : 10655498</p>
+              <p id="radio">Gender :
+              <input type="radio" name="gender" value="male"> Male
+              <input type="radio" name="gender" value="female"checked> Female
+              <input type="radio" name="gender" value="other"> Other  
+            </p>
+            <select class="custom-select mr-sm-2" id="halls-dropdown">
+              <select selected >Select Hall</select>
+              
+            </select>
+            <select class="custom-select mr-sm-2" id="rooms-dropdown">
+              <select selected>Select Room</select>
+              
+            </select>
+            <div class="col-auto my-1" style="margin-top: 20px">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+          </form>
+        </div>
+          <script>
+            let loadHalls = async () => {
+              let url = 'http://localhost:5000/halls';
+      
+              let response = await fetch(url);
+      
+              let halls = await response.json();
+      
+              let hallsDropdown = document.querySelector('#halls-dropdown');
+      
+              let dropdownOptions = '';
+      
+              halls.forEach(hall => {
+                let dropdownOption = `<option value="${hall._id}">${hall.hallName}</option>`;
+      
+                dropdownOptions += dropdownOption;
+              });
+      
+              hallsDropdown.innerHTML = dropdownOptions;
+            };
+          </script>
+          <script>
+            let loadrooms = async () => {
+              let url = 'http://localhost:5000/rooms';
+      
+              let response = await fetch(url);
+      
+              let rooms = await response.json();
+      
+              let roomsDropdown = document.querySelector('#rooms-dropdown');
+      
+              let dropdownOptions = '';
+      
+              console.log(dropdownOptions);
+      
+              rooms.forEach(room => {
+                let dropdownOption = `<option value="${room._id}">${room.roomNumber}</option>`;
+      
+                dropdownOptions += dropdownOption;
+              });
+      
+              roomsDropdown.innerHTML = dropdownOptions;
+            };
+          </script>
+
+
+</body>
+</html>

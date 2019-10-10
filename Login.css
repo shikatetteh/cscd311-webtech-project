@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(231, 231, 238);
+}
+
+#one {
+  font-family: Georgia, 'Times New Roman';
+  font-size: medium;
+  margin: 5px;
+}
